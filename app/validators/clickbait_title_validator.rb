@@ -1,8 +1,8 @@
 class ClickbaitTitleValidator < ActiveModel::EachValidator
   
-  def validate(record, value)
-    unless value =~ /\b(Won't Believe|Secret|Top \d|Guess)\b/
-      record.errors[attribute] << "Title is not clickbaity enough"
+  def validate(record)
+    unless record.title.include?(/flatironschool.com/)
+      record.errors[:email] << "We're only allowed to have people who work for the company in the database!"
     end
   end
 end
